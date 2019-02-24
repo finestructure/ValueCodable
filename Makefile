@@ -1,6 +1,6 @@
 .PHONY: magic
 
-PROJ = FSValue
+PROJ = ValueCodable
 proj = $(shell echo $(PROJ) | tr A-Z a-z)
 
 clean:
