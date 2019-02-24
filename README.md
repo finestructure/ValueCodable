@@ -1,3 +1,5 @@
 # FSValue
 
-A description of this package.
+[![Build Status](https://travis-ci.com/finestructure/FSValue.svg?branch=develop)](https://travis-ci.com/finestructure/FSValue)
+
+A Value struct to decode arbitrary data.
