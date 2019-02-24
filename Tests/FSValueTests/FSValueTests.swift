@@ -8,8 +8,4 @@ final class FSValueTests: XCTestCase {
         // results.
         XCTAssertEqual(FSValue().text, "Hello, World!")
     }
-
-    static var allTests = [
-        ("testExample", testExample),
-    ]
 }

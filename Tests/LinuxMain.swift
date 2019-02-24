@@ -1,7 +1,19 @@
+// Generated using Sourcery 0.15.0 — https://github.com/krzysztofzablocki/Sourcery
+// DO NOT EDIT
+
+
 import XCTest
 
-import FSValueTests
+@testable import FSValueTests
 
-var tests = [XCTestCaseEntry]()
-tests += FSValueTests.allTests()
-XCTMain(tests)
+// swiftlint:disable trailing_comma
+extension FSValueTests {
+  static var allTests: [(String, (FSValueTests) -> () throws -> Void)] = [
+      ("testExample", testExample),
+  ]
+}
+
+XCTMain([
+  testCase(FSValueTests.allTests),
+])
+// swiftlint:enable trailing_comma
