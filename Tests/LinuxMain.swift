@@ -4,11 +4,11 @@
 
 import XCTest
 
-@testable import FSValueTests
+@testable import ValueCodableTests
 
 // swiftlint:disable trailing_comma
-extension FSValueTests {
-  static var allTests: [(String, (FSValueTests) -> () throws -> Void)] = [
+extension ValueCodableTests {
+  static var allTests: [(String, (ValueCodableTests) -> () throws -> Void)] = [
       ("test_decodeBasicTypes", test_decodeBasicTypes),
       ("test_encodeBasicTypes", test_encodeBasicTypes),
       ("test_null_json", test_null_json),
@@ -22,6 +22,6 @@ extension FSValueTests {
 }
 
 XCTMain([
-  testCase(FSValueTests.allTests),
+  testCase(ValueCodableTests.allTests),
 ])
 // swiftlint:enable trailing_comma

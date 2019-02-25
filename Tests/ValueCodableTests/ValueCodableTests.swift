@@ -1,10 +1,10 @@
 import XCTest
 import Yams
 
-@testable import FSValue
+@testable import ValueCodable
 
 
-final class FSValueTests: XCTestCase {
+final class ValueCodableTests: XCTestCase {
 
     func test_decodeBasicTypes() throws {
         let s = """
