@@ -36,7 +36,8 @@ extension Value: Codable {
         }
 
         if let string = try? container.decode(String.self),
-            // strings with a colon get parsed as Numeric (with value 0) *)
+            // when decoding YML, strings with a colon get
+            // parsed as Numeric (with value 0) *)
             // therefore just accept them as string and return
             // *) probably due to dictionary syntax
             string.contains(":") {
