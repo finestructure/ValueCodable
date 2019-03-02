@@ -170,7 +170,7 @@ extension Value: ExpressibleByBooleanLiteral {
 
 
 extension Value {
-    subscript(key: String) -> Value? {
+    public subscript(key: String) -> Value? {
         let keyPaths = key.split(separator: ".")
         guard let firstSubstring = keyPaths.first else { return nil }
         let firstKeyPath = String(firstSubstring)
@@ -190,7 +190,7 @@ extension Value {
         return remainder.isEmpty ? nested : nested?[remainder]
     }
 
-    subscript(index: Int) -> Value? {
+    public subscript(index: Int) -> Value? {
         switch self {
         case .array(let v):
             return index >= 0

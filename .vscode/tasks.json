@@ -1,0 +1,37 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "swift build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "build tests",
+            "type": "process",
+            "command": "swift",
+            "group": "build",
+            "args": [
+                "build",
+                "--build-tests"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "test",
+            "type": "process",
+            "command": "swift",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "args": [
+                "test"
+            ]
+        }
+    ]
+}
