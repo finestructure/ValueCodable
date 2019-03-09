@@ -10,7 +10,7 @@ import XCTest
 extension UtilsTests {
   static var allTests: [(String, (UtilsTests) -> () throws -> Void)] = [
       ("test_indexMatch", test_indexMatch),
-      ("test_findIndex", test_findIndex),
+      ("test_splitIndex", test_splitIndex),
   ]
 }
 extension ValueCodableTests {
@@ -23,6 +23,7 @@ extension ValueCodableTests {
       ("test_decodeComplexResponse", test_decodeComplexResponse),
       ("test_key_lookup", test_key_lookup),
       ("test_key_lookup_nested", test_key_lookup_nested),
+      ("test_key_lookup_nested_variant", test_key_lookup_nested_variant),
       ("test_array_indexing", test_array_indexing),
   ]
 }
