@@ -7,6 +7,12 @@ import XCTest
 @testable import ValueCodableTests
 
 // swiftlint:disable trailing_comma
+extension UtilsTests {
+  static var allTests: [(String, (UtilsTests) -> () throws -> Void)] = [
+      ("test_indexMatch", test_indexMatch),
+      ("test_splitIndex", test_splitIndex),
+  ]
+}
 extension ValueCodableTests {
   static var allTests: [(String, (ValueCodableTests) -> () throws -> Void)] = [
       ("test_decodeBasicTypes", test_decodeBasicTypes),
@@ -17,11 +23,13 @@ extension ValueCodableTests {
       ("test_decodeComplexResponse", test_decodeComplexResponse),
       ("test_key_lookup", test_key_lookup),
       ("test_key_lookup_nested", test_key_lookup_nested),
+      ("test_key_lookup_nested_variant", test_key_lookup_nested_variant),
       ("test_array_indexing", test_array_indexing),
   ]
 }
 
 XCTMain([
+  testCase(UtilsTests.allTests),
   testCase(ValueCodableTests.allTests),
 ])
 // swiftlint:enable trailing_comma

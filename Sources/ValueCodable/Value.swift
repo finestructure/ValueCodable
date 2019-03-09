@@ -178,10 +178,15 @@ extension Value {
 
         let nested: Value?
 
-        switch (self, Int(firstKeyPath)) {
-        case let (.dictionary(d), nil):
+        switch (self, Int(firstKeyPath), splitIndex(firstKeyPath)) {
+        case let (.dictionary(d), nil, nil):
+            // "obj.key"
             nested = d[firstKeyPath]
-        case let (.array, .some(index)):
+        case let (.dictionary(d), nil, .some(keyIndex)):
+            // "obj.key[index]"
+            nested = d[keyIndex.keyPath]?[keyIndex.index]
+        case let (.array, .some(index), nil):
+            // "array.index
             nested = self[index]
         default:
             return nil
