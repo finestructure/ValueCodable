@@ -190,6 +190,20 @@ final class ValueCodableTests: XCTestCase {
         XCTAssertEqual(v["obj.1"], 42)
         XCTAssertEqual(v["obj.2"], d)
         XCTAssertEqual(v["obj.2.foo"], "bar")
+        XCTAssertEqual(v["obj.-1.foo"], "bar")
+        XCTAssertEqual(v["obj.-2"], 42)
+    }
+
+    func test_key_lookup_nested_variant() throws {
+        let d: Value = .dictionary(["foo": "bar"])
+        let a: Value = .array(["a", 42, d])
+        let v: Value = .dictionary(["obj": a])
+        XCTAssertEqual(v["obj[0]"], "a")
+        XCTAssertEqual(v["obj[1]"], 42)
+        XCTAssertEqual(v["obj[2]"], d)
+        XCTAssertEqual(v["obj[2].foo"], "bar")
+        XCTAssertEqual(v["obj[-1].foo"], "bar")
+        XCTAssertEqual(v["obj[-2]"], 42)
     }
 
     func test_array_indexing() throws {

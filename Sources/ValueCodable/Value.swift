@@ -36,7 +36,8 @@ extension Value: Codable {
         }
 
         if let string = try? container.decode(String.self),
-            // strings with a colon get parsed as Numeric (with value 0) *)
+            // when decoding YML, strings with a colon get
+            // parsed as Numeric (with value 0) *)
             // therefore just accept them as string and return
             // *) probably due to dictionary syntax
             string.contains(":") {
@@ -169,7 +170,7 @@ extension Value: ExpressibleByBooleanLiteral {
 
 
 extension Value {
-    subscript(key: String) -> Value? {
+    public subscript(key: String) -> Value? {
         let keyPaths = key.split(separator: ".")
         guard let firstSubstring = keyPaths.first else { return nil }
         let firstKeyPath = String(firstSubstring)
@@ -177,10 +178,15 @@ extension Value {
 
         let nested: Value?
 
-        switch (self, Int(firstKeyPath)) {
-        case let (.dictionary(d), nil):
+        switch (self, Int(firstKeyPath), splitIndex(firstKeyPath)) {
+        case let (.dictionary(d), nil, nil):
+            // "obj.key"
             nested = d[firstKeyPath]
-        case let (.array, .some(index)):
+        case let (.dictionary(d), nil, .some(keyIndex)):
+            // "obj.key[index]"
+            nested = d[keyIndex.keyPath]?[keyIndex.index]
+        case let (.array, .some(index), nil):
+            // "array.index
             nested = self[index]
         default:
             return nil
@@ -189,7 +195,7 @@ extension Value {
         return remainder.isEmpty ? nested : nested?[remainder]
     }
 
-    subscript(index: Int) -> Value? {
+    public subscript(index: Int) -> Value? {
         switch self {
         case .array(let v):
             return index >= 0
