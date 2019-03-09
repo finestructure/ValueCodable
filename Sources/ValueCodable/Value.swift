@@ -186,7 +186,7 @@ extension Value {
             // "obj.key[index]"
             nested = d[keyIndex.keyPath]?[keyIndex.index]
         case let (.array, .some(index), nil):
-            // "obj[index]
+            // "array.index
             nested = self[index]
         default:
             return nil
