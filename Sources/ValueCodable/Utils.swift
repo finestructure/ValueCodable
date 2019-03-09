@@ -17,11 +17,11 @@ func indexMatch(_ string: String) -> (keyPath: String, index: String)? {
         // index 0: full match
         // index 1: first capture group
         // index 2: second capture group
-        guard let r1 = Range(match.range(at: 1), in: string) else { return nil }
-        let s1 = String(string[r1])
-        guard let r2 = Range(match.range(at: 2), in: string) else { return nil }
-        let s2 = String(string[r2])
-        return (s1, s2)
+        guard
+            let r1 = Range(match.range(at: 1), in: string),
+            let r2 = Range(match.range(at: 2), in: string)
+            else { return nil }
+        return (String(string[r1]), String(string[r2]))
     }
     return nil
 }
