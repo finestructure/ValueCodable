@@ -211,6 +211,11 @@ final class ValueCodableTests: XCTestCase {
         XCTAssertEqual(a[0], "a")
         XCTAssertEqual(a[-1], "z")
         XCTAssertEqual(a[1], a[-2])
+        XCTAssertEqual(a[-3], "a")
+        XCTAssertNil(a[-4])
+        let empty: Value = .array([])
+        XCTAssertNil(empty[0])
+        XCTAssertNil(empty[-1])
     }
 
 }
