@@ -196,11 +196,11 @@ extension Value {
     }
 
     public subscript(index: Int) -> Value? {
-        switch self {
-        case .array(let v):
-            return index >= 0
-                ? v[index]
-                : v[v.index(v.endIndex, offsetBy: index)]  // from end
+        switch (self, index) {
+        case (.array(let v), index) where (0..<v.count).contains(index):
+            return v[index]
+        case (.array(let v), index) where (-v.count..<0).contains(index):
+            return v[v.index(v.endIndex, offsetBy: index)]  // from end
         default:
             return nil
         }
