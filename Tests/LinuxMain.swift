@@ -17,6 +17,7 @@ extension ValueCodableTests {
   static var allTests: [(String, (ValueCodableTests) -> () throws -> Void)] = [
       ("test_decodeBasicTypes", test_decodeBasicTypes),
       ("test_encodeBasicTypes", test_encodeBasicTypes),
+      ("test_null_yml", test_null_yml),
       ("test_null_json", test_null_json),
       ("test_encode_null", test_encode_null),
       ("test_bool_json", test_bool_json),

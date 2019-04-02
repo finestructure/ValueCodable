@@ -78,8 +78,7 @@ final class ValueCodableTests: XCTestCase {
               """)
     }
 
-    func _test_null_yml() throws {
-        // Possible bug in Yams
+    func test_null_yml() throws {
         let s = """
               n1: ~
               n2: null
@@ -95,11 +94,11 @@ final class ValueCodableTests: XCTestCase {
             let n5: String?
         }
         let t = try YAMLDecoder().decode(Test.self, from: s)
-        XCTAssertNil(t.n1)  // XCTAssertNil failed: "~"
-        XCTAssertNil(t.n2)  // XCTAssertNil failed: "null"
-        XCTAssertNil(t.n3)  // XCTAssertNil failed: "NULL"
-        XCTAssertNil(t.n4)  // XCTAssertNil failed: "Null"
-        XCTAssertNil(t.n5)  // XCTAssertNil failed: ""
+        XCTAssertNil(t.n1)
+        XCTAssertNil(t.n2)
+        XCTAssertNil(t.n3)
+        XCTAssertNil(t.n4)
+        XCTAssertNil(t.n5)
     }
 
     func test_null_json() throws {
